@@ -36,6 +36,7 @@ with st.sidebar:
     days = st.number_input('Day no:', 1, 10000, 1000, 1)
     guild_fill = st.number_input('Guild fill no:', 1, 20, 19, 1)
     players_guild_left_b = st.number_input('Members left in Guild:', 1, 20, 16, 1)
+    tutorial_finish = st.number_input('Completed tutorial %:', 1, 100, 63, 1)
     
     
     
@@ -81,7 +82,7 @@ ret_df = pd.DataFrame(columns=['Day of Game', 'Retention'])
 ret_df['Day of Game'] = ret_x
 ret_df['Retention'] = ret_y
 
-
+######retention chart#######
 a3 = func(np.linspace(0,100,100),popt[0], popt[1], popt[2], popt[3], popt[4], popt[5])
 a3[0] = 1
 ret_fit_df = pd.DataFrame(columns=['Day of Game', 'Retention'])
@@ -95,10 +96,10 @@ d = alt.Chart(ret_fit_df).mark_line(stroke='#5276A7', interpolate='monotone').en
     x='Day of Game', y='Retention'
     )
 e = alt.layer(c, d)
-
+###############
 
 #guild_fill = 18
-guilds = dau/guild_fill
+guilds = (dau-new_players+(new_players*tutorial_finish/100))/guild_fill
 dau_1 = np.sum(new_players*a2[0:days+1])
 players_guild_left = (dau_1 - new_players)/guilds
 guilds_b = (dau_1 - new_players)/players_guild_left_b
