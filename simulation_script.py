@@ -38,6 +38,7 @@ with st.sidebar:
     players_guild_left_b = st.number_input('Members left in Guild:', 1, 20, 16, 1)
     tutorial_finish = st.number_input('Completed tutorial %:', 1, 100, 63, 1)
     
+    ret_d1 = st.number_input('Retention D1 %:', 1, 100, 25, 1)
     
     
     with st.expander("Retention Fit Parameters"):
@@ -72,6 +73,7 @@ popt, pcov = sc.optimize.curve_fit(func,ret_x,ret_y,p0=(0.23,3,0.05,10,0.03,100)
 #new_players = 1000
 a1 = np.ones((days,1))*new_players
 a2 = func(np.linspace(0,days,days),popt[0], popt[1], popt[2], popt[3], popt[4], popt[5])
+a2 = a2*((ret_d1/100)/a2[1])
 a2[0] = 1
 
 #day = 10000
