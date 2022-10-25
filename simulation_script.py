@@ -5,7 +5,8 @@ Created on Mon Oct 24 14:37:25 2022
 @author: pnowakowski
 """
 import numpy as np
-from scipy.optimize import curve_fit
+#from scipy.optimize import curve_fit
+import scipy as sc
 import streamlit as st
 import altair as alt
 import pandas as pd
@@ -63,7 +64,7 @@ ret_y = np.array([r1,r2,r3,r4,r5,r6,r7,r14,r30,r60,r90])/100
 def func(x, a, b, c, d, e, f):
     return a * np.exp(-x/b) + c * np.exp(-x/d) + e * np.exp(-x/f)
 
-popt, pcov = curve_fit(func,ret_x,ret_y,p0=(0.23,3,0.05,10,0.03,100))
+popt, pcov = sc.optimize.curve_fit(func,ret_x,ret_y,p0=(0.23,3,0.05,10,0.03,100))
 
 
 #days = 1001
