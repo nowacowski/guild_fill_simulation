@@ -31,7 +31,7 @@ with st.sidebar:
         # Input Values
         """
     )
-    new_players = st.slider('# New Players (daily):', 0, 10000, 1000, 100)
+    new_players = st.number_input('# New Players (daily):', 0, 10000, 1000, 10)
     #days = st.slider('Day no:', 1, 10000, 10000, 1)
     days = st.number_input('Day no:', 1, 10000, 1000, 1)
     guild_fill = st.number_input('Guild fill no:', 1, 20, 19, 1)
@@ -106,7 +106,7 @@ dau_1 = np.sum(new_players*a2[0:days+1])
 players_guild_left = (dau_1 - new_players)/guilds
 guilds_b = (dau_1 - new_players)/players_guild_left_b
 
-
+guilds_needed = np.floor(((new_players*tutorial_finish/100)-1)/players_guild_left_b)+15
 
 ########results display##############
 
@@ -118,6 +118,7 @@ st.metric("Left in Guild: ",str(players_guild_left))
 st.write("##")
 st.write("### Specifying 'Members left in Guild'")
 st.metric("Guilds: ",str(guilds_b))
+st.metric("Guilds needed: ",str(guilds_needed))
 
 st.write("##")
 with st.expander("Retention Fit"):
