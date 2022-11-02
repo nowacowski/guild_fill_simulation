@@ -38,7 +38,7 @@ with st.sidebar:
     players_guild_left_b = st.number_input('Members left in Guild:', 1, 20, 16, 1)
     tutorial_finish = st.number_input('Completed tutorial %:', 1, 100, 63, 1)
     
-    ret_d1 = st.number_input('Retention D1 %:', 1, 100, 25, 1)
+    # ret_d1 = st.number_input('Retention D1 %:', 1, 100, 25, 1)
     
     
     with st.expander("Retention Fit Parameters"):
