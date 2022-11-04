@@ -35,7 +35,7 @@ with st.sidebar:
     #days = st.slider('Day no:', 1, 10000, 10000, 1)
     days = st.number_input('Day no:', 1, 10000, 1000, 1)
     # guild_fill = st.number_input('Guild fill no:', 1, 20, 19, 1)
-    filled_guilds_players = st.number_input('% Players in guilds with 19-20 members:', 75, 0, 100, 1)
+    filled_guilds_players = st.number_input('% Players in guilds with 19-20 members:', 1, 100, 75, 1)
     players_guild_left_b = st.number_input('Members left in Guild:', 1, 20, 16, 1)
     tutorial_finish = st.number_input('Completed tutorial %:', 1, 100, 63, 1)
     
