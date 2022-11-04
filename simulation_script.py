@@ -106,7 +106,7 @@ dau_1 = np.sum(new_players*a2[0:days+1])
 players_guild_left = (dau_1 - new_players)/guilds
 guilds_b = (dau_1 - new_players)/players_guild_left_b
 
-guilds_needed = np.floor(((new_players*tutorial_finish/100)-1)/(20-players_guild_left_b))+15
+guilds_needed = np.floor(((new_players*tutorial_finish/100)-1)/(19-players_guild_left_b))+6
 
 ########results display##############
 
