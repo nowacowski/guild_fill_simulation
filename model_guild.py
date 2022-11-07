@@ -242,7 +242,7 @@ st.metric("Places in non-empty Guilds:",str(places))
 st.write("##")
 
 st.write("#### Guilds ")
-st.table(df2)
+st.table(df4)
 
 st.write("##")
 with st.expander("Retention Fit"):
