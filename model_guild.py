@@ -238,8 +238,20 @@ g=alt.Chart(df2).mark_bar().encode(
     y='Count'
 )
 
+text = g.mark_text(
+    align='left',
+    baseline='middle',
+    dx=3,
+    fontStyle='bold',
+    fontSize=20
+).encode(
+    text=alt.Text('avg_value:Q', format=",.3f")
+)
+final_bar = (g + text)
 
-st.altair_chart(g, use_container_width=True)
+
+
+st.altair_chart(final_bar, use_container_width=True)
 
 st.write("##")
 with st.expander("Retention Fit"):
