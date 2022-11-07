@@ -231,7 +231,7 @@ df=pd.DataFrame(z2, columns=['Members'])
 df2=df.value_counts().to_frame()
 df2.reset_index(inplace=True)
 df2 = df2.rename(columns = {0:'Count'})
-df2 = df2.set_index('Members')
+# df2 = df2.set_index('Members')
 
 
 st.table(df2)
