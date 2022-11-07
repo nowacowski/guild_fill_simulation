@@ -75,7 +75,7 @@ a2 = a2/tut_compl
 a2[0] = 1
 
 
-dau = np.sum(n*a2[0:days])
+dau = np.sum(n*a2[1:days+1])
 
 
 
@@ -220,10 +220,9 @@ for j in range(1,days+1):
 
 ########results display################################################
 
-st.metric("Active Players on day "+str(days)+": ",str(dau))
-st.write("##")
-st.write("### Specifying 'Guild fill no'")
-st.write("##")
+st.metric("Active Players after day "+str(days)+": ",str(dau))
+st.metric("New players joining guild:",str(n))
+
 
 
 
@@ -231,10 +230,22 @@ df=pd.DataFrame(z2, columns=['Members'])
 df2=df.value_counts().to_frame()
 df2.reset_index(inplace=True)
 df2 = df2.rename(columns = {0:'Count'})
+df2 = df2.sort_values(by=['Members'], ascending=False)
 # df2 = df2.set_index('Members')
 
+df3 = pd.DataFrame(df2['Count']*19-df2['Members']*df2['Count'])
+df4 = pd.concat([df2, df3], axis=1)
+df4 = df4.rename(columns = {0:'Free Spots'})
 
+places = df4[df4['Members']>0]['Free Spots'].sum()
+st.metric("Places in non-empty Guilds:",str(places))
+st.write("##")
+
+st.write("#### Guilds ")
 st.table(df2)
+
+st.write("##")
+st.metric("Places in non-empty guilds "+str(days)+": ",str(dau))
 
 st.write("##")
 with st.expander("Retention Fit"):
