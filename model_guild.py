@@ -227,12 +227,17 @@ st.write("##")
 
 
 
-df=pd.DataFrame(z2)
+df=pd.DataFrame(z2, columns=['Members'])
+df2=df.value_counts().to_frame()
+df2.reset_index(inplace=True)
+df2 = df2.rename(columns = {0:'Count'})
 
-g = alt.Chart(df).mark_bar().encode(
-    alt.X("IMDB_Rating:Q", bin=True),
-    y='count()',
+
+g=alt.Chart(df2).mark_bar().encode(
+    x='Members',
+    y='Count'
 )
+
 
 st.altair_chart(g, use_container_width=True)
 
