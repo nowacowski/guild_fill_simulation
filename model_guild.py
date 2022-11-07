@@ -231,27 +231,10 @@ df=pd.DataFrame(z2, columns=['Members'])
 df2=df.value_counts().to_frame()
 df2.reset_index(inplace=True)
 df2 = df2.rename(columns = {0:'Count'})
+df2 = df2.set_index('Members')
 
 
-g=alt.Chart(df2).mark_bar().encode(
-    x='Members',
-    y='Count'
-)
-
-text = g.mark_text(
-    align='left',
-    baseline='middle',
-    dx=3,
-    fontStyle='bold',
-    fontSize=20
-).encode(
-    text=alt.Text('avg_value:Q', format=",.3f")
-)
-final_bar = (g + text)
-
-
-
-st.altair_chart(final_bar, use_container_width=True)
+st.table(df2)
 
 st.write("##")
 with st.expander("Retention Fit"):
