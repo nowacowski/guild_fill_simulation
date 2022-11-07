@@ -233,7 +233,7 @@ df2 = df2.rename(columns = {0:'Count'})
 df2 = df2.sort_values(by=['Members'], ascending=False)
 # df2 = df2.set_index('Members')
 
-df3 = pd.DataFrame(df2['Count']*19-df2['Members']*df2['Count'])
+df3 = pd.DataFrame(df2['Count']*guild_fill-df2['Members']*df2['Count'])
 df4 = pd.concat([df2, df3], axis=1)
 df4 = df4.rename(columns = {0:'Free Spots'})
 
