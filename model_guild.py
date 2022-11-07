@@ -245,8 +245,5 @@ st.write("#### Guilds ")
 st.table(df2)
 
 st.write("##")
-st.metric("Places in non-empty guilds "+str(days)+": ",str(dau))
-
-st.write("##")
 with st.expander("Retention Fit"):
     st.altair_chart(e, use_container_width=True)
